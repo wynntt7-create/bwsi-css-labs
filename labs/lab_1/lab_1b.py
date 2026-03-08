@@ -44,6 +44,15 @@ def request_sanitized_number(prompt: str) -> float:
             return number
         except ValueError:
             print("Invalid input. Please enter a valid number")
+def request_sanitized_symbol(prompt: str):
+    while True:
+        symbols = ['add', 'subtract', 'multiply', 'divide']
+        symbol = input(prompt)
+        if symbol in symbols:
+            break
+        else:
+            print("Not a valid operation! Please input the correct operation")
+        
 
 def main():
     
@@ -52,7 +61,7 @@ def main():
     # Ask the user for sample input    
     num1 = request_sanitized_number("Enter the first number: ")
     num2 = request_sanitized_number("Enter the second number: ")
-    operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
+    operation = request_sanitized_symbol("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
     result = simple_calculator(operation, num1, num2)
